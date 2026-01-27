@@ -1,0 +1,55 @@
+/* Header.css */
+.header {
+  background: white;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.theme-toggle,
+.settings-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle:hover,
+.settings-btn:hover {
+  background: #ecf0f1;
+}
+
+.welcome-section h2 {
+  font-size: 1.8rem;
+  color: #34495e;
+  margin-bottom: 0.5rem;
+}
+
+.focus-tag {
+  display: inline-block;
+  background: #3498db;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}

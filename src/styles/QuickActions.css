@@ -1,0 +1,16 @@
+/* QuickActions.css */
+.quick-actions-card {
+  background: #f8f9fa;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.actions-grid .btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+}

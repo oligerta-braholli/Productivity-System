@@ -1,0 +1,84 @@
+/* Dashboard.css */
+.dashboard {
+  width: 100%;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.dashboard-left,
+.dashboard-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-card {
+  margin-top: 0.75rem;
+}
+
+.calendar-placeholder {
+  text-align: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ecf0f1;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.calendar-day:hover {
+  background: #3498db;
+  color: white;
+}
+
+.energy-card {
+  margin-top: 0.75rem;
+}
+
+.energy-selector {
+  text-align: center;
+}
+
+.emoji-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.emoji-btn {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.emoji-btn:hover {
+  transform: scale(1.2);
+  background: #ecf0f1;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
