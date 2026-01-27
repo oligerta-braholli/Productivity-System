@@ -1,0 +1,113 @@
+/* History.css */
+.history-page {
+  width: 100%;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.history-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.history-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.history-filters label {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.history-filters select {
+  padding: 0.5rem;
+  border: 2px solid #ecf0f1;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+.sessions-list {
+  overflow-x: auto;
+}
+
+.sessions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sessions-table th {
+  text-align: left;
+  padding: 1rem;
+  background: #ecf0f1;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.sessions-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.sessions-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.session-type {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.type-deep-work {
+  background: #3498db;
+  color: white;
+}
+
+.type-meeting {
+  background: #9b59b6;
+  color: white;
+}
+
+.type-break {
+  background: #27ae60;
+  color: white;
+}
+
+.type-learning {
+  background: #f39c12;
+  color: white;
+}
+
+.no-sessions {
+  text-align: center;
+  color: #95a5a6;
+  padding: 2rem;
+}
