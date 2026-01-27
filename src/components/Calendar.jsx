@@ -11,7 +11,8 @@ function Calendar() {
   const [newBlockEnd, setNewBlockEnd] = useState('');
   const [newBlockTitle, setNewBlockTitle] = useState('');
 
-  // Funksione për kalendarit
+  // Functions for the calendar
+
   const getDaysInMonth = (date) => {
     const year = date.getFullYear();
     const month = date.getMonth();
@@ -25,10 +26,10 @@ function Calendar() {
 
   const { daysInMonth, startingDayOfWeek } = getDaysInMonth(currentDate);
   
-  const monthNames = ['Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor', 
-                      'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nëntor', 'Dhjetor'];
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
+                      'July', 'August', 'September', 'October', 'November', 'December'];
   
-  const dayNames = ['D', 'H', 'M', 'M', 'E', 'P', 'Sh'];
+  const dayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
   const changeMonth = (offset) => {
     const newDate = new Date(currentDate);
@@ -83,13 +84,13 @@ function Calendar() {
   const renderCalendarDays = () => {
     const days = [];
     
-    // Shto ditë bosh para fillimit të muajit
+    // Add empty days before the start of the month
     const startDay = startingDayOfWeek === 0 ? 6 : startingDayOfWeek - 1;
     for (let i = 0; i < startDay; i++) {
       days.push(<div key={`empty-${i}`} className="calendar-day empty"></div>);
     }
     
-    // Shto ditët e muajit
+    // Add the days of the month
     for (let day = 1; day <= daysInMonth; day++) {
       days.push(
         <div
