@@ -1,4 +1,4 @@
-import Card from './Card';
+  import Card from './Card';
 import '../styles/Stats.css';
 
 function Stats({ sessions = [] }) {
