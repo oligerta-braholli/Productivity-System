@@ -112,7 +112,7 @@
   border-top: 1px solid #ecf0f1;
 }
 
-.time-blocks-section h4 {
+.time-blocks-section h3 {
   margin-bottom: 0.3rem;
   color: #2c3e50;
   font-size: 0.7rem;
@@ -131,11 +131,11 @@
   border: 1px solid #ecf0f1;
   border-radius: 3px;
   font-family: inherit;
-  font-size: 0.75rem;
+  font-size: 1.25rem;
 }
 
 .add-block-form input[type="time"] {
-  width: 70px;
+  width: 100px;
 }
 
 .add-block-form input[type="text"]:focus,
@@ -148,8 +148,8 @@
   background: #27ae60;
   color: white;
   border: none;
-  width: 26px;
-  height: 26px;
+  width: 36px;
+  height: 46px;
   border-radius: 3px;
   font-size: 1.1rem;
   cursor: pointer;
@@ -166,8 +166,8 @@
 .time-blocks-list {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  max-height: 100px;
+  gap: 0.4rem;
+  max-height: 50px;
   overflow-y: auto;
 }
 
@@ -181,9 +181,9 @@
 .time-block-item {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 0.3rem;
+  gap: 1.5rem;
   align-items: center;
-  padding: 0.25rem;
+  padding: 0.45rem;
   background: #f8f9fa;
   border-radius: 3px;
   border-left: 2px solid #3498db;
@@ -198,21 +198,22 @@
 .block-time {
   font-weight: 600;
   color: #3498db;
-  font-size: 0.7rem;
+  font-size: 1.17rem;
   white-space: nowrap;
+  gap: flex;
 }
 
 .block-title {
   color: #2c3e50;
-  font-size: 0.75rem;
+  font-size: 1.27rem;
 }
 
 .delete-block-btn {
   background: #e74c3c;
   color: white;
   border: none;
-  width: 18px;
-  height: 18px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   font-size: 0.9rem;
   cursor: pointer;
