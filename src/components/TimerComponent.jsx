@@ -4,9 +4,17 @@ import Button from './Button';
 import Card from './Card';
 import '../styles/Timer.css';
 
-function TimerComponent({ onSessionComplete }) {
-  const { time, isRunning, isPaused, start, pause, resume, stop, reset, formatTime } = useTimer();
+function TimerComponent({
+  onSessionComplete,
+  timer,
+  sessionType: controlledSessionType,
+  onSessionTypeChange
+}) {
+  const internalTimer = useTimer();
+  const { time, isRunning, isPaused, start, pause, resume, stop, reset, formatTime } = timer ?? internalTimer;
   const [sessionType, setSessionType] = useState('deep-work');
+  const activeSessionType = controlledSessionType ?? sessionType;
+  const setSessionTypeValue = onSessionTypeChange ?? setSessionType;
 
   const handleStart = () => {
     start();
@@ -24,12 +32,13 @@ function TimerComponent({ onSessionComplete }) {
     if (time > 0 && onSessionComplete) {
       onSessionComplete({
         duration: time,
-        type: sessionType,
+        type: activeSessionType,
         timestamp: new Date().toISOString()
       });
     }
     stop();
   };
+
 
   return (
     <Card title="Timer" className="timer-card">
@@ -40,8 +49,8 @@ function TimerComponent({ onSessionComplete }) {
       <div className="session-type">
         <label>Session Type:</label>
         <select 
-          value={sessionType} 
-          onChange={(e) => setSessionType(e.target.value)}
+          value={activeSessionType} 
+          onChange={(e) => setSessionTypeValue(e.target.value)}
           disabled={isRunning}
         >
           <option value="deep-work">Deep Work</option>

@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
+import useTimer from '../hooks/useTimer';
 import Stats from '../components/Stats';
 import TimerComponent from '../components/TimerComponent';
 import QuickActions from '../components/QuickActions';
@@ -8,14 +10,28 @@ import '../styles/Dashboard.css';
 
 function Dashboard() {
   const [sessions, setSessions] = useLocalStorage('sessions', []);
+  const timer = useTimer();
+  const [sessionType, setSessionType] = useState('deep-work');
 
   const handleSessionComplete = (session) => {
     setSessions([...sessions, { ...session, id: Date.now() }]);
   };
 
   const handleQuickAction = (actionId) => {
-    console.log('Quick action:', actionId);
-    // Här kan du lägga till logik för quick actions
+    setSessionType(actionId);
+
+    if (timer.isPaused) {
+      timer.resume();
+      return;
+    }
+
+    if (timer.isRunning) {
+      timer.stop();
+      timer.start();
+      return;
+    }
+
+    timer.start();
   };
 
   return (
@@ -23,7 +39,12 @@ function Dashboard() {
       <div className="dashboard-grid">
         <div className="dashboard-left">
           <Stats sessions={sessions} />
-          <TimerComponent onSessionComplete={handleSessionComplete} />
+          <TimerComponent
+            onSessionComplete={handleSessionComplete}
+            timer={timer}
+            sessionType={sessionType}
+            onSessionTypeChange={setSessionType}
+          />
         </div>
         
         <div className="dashboard-right">
