@@ -29,7 +29,7 @@ function Calendar() {
   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
                       'July', 'August', 'September', 'October', 'November', 'December'];
   
-  const dayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  const dayNames = ['M', 'T', 'O', 'T', 'F', 'L','S'];
 
   const changeMonth = (offset) => {
     const newDate = new Date(currentDate);
