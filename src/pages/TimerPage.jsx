@@ -27,7 +27,7 @@ function TimerPage() {
         start: newBreakStart,
         end: newBreakEnd,
         description: breakDescription,
-        date: new Date().toLocaleDateString('sv-SE')
+        date: new Date().toLocaleDateString('en-US')
       };
       setBreaks([...breaks, newBreak]);
       setNewBreakStart('');
@@ -37,7 +37,7 @@ function TimerPage() {
   };
 
   const todaysBreaks = breaks.filter(
-    b => b.date === new Date().toLocaleDateString('sv-SE')
+    b => b.date === new Date().toLocaleDateString('en-US')
   );
 
   return (
@@ -46,7 +46,7 @@ function TimerPage() {
         <div className="timer-main">
           <TimerComponent onSessionComplete={handleSessionComplete} />
           
-          <Card title="Arbetsdag" className="workday-card">
+          <Card title="Workday" className="workday-card">
             <form className="workday-form">
               <div className="time-inputs">
                 <Input
@@ -56,7 +56,7 @@ function TimerPage() {
                   onChange={(e) => setWorkStart(e.target.value)}
                 />
                 <Input
-                  label="Slut"
+                  label="End"
                   type="time"
                   value={workEnd}
                   onChange={(e) => setWorkEnd(e.target.value)}
@@ -67,38 +67,38 @@ function TimerPage() {
         </div>
 
         <div className="timer-sidebar">
-          <Card title="Pauser" className="breaks-card">
+          <Card title="Breaks" className="breaks-card">
             <form onSubmit={handleAddBreak} className="break-form">
               <Input
-                label="Start tid"
+                label="Start time"
                 type="time"
                 value={newBreakStart}
                 onChange={(e) => setNewBreakStart(e.target.value)}
                 required
               />
               <Input
-                label="Slut tid"
+                label="End time"
                 type="time"
                 value={newBreakEnd}
                 onChange={(e) => setNewBreakEnd(e.target.value)}
                 required
               />
               <Input
-                label="Beskrivning"
+                label="Description"
                 type="text"
                 value={breakDescription}
                 onChange={(e) => setBreakDescription(e.target.value)}
-                placeholder="t.ex. Kaffepaus"
+                placeholder="e.g. Coffee break"
               />
               <Button type="submit" variant="primary">
-                Lägg till paus
+                Add Break
               </Button>
             </form>
 
             <div className="breaks-list">
-              <h4>Dagens pauser:</h4>
+              <h4>Today's breaks:</h4>
               {todaysBreaks.length === 0 ? (
-                <p className="no-breaks">Inga pauser inlagda</p>
+                <p className="no-breaks">No breaks scheduled</p>
               ) : (
                 <ul>
                   {todaysBreaks.map((break_) => (
@@ -116,19 +116,19 @@ function TimerPage() {
             </div>
           </Card>
 
-          <Card title="Rekommendationer" className="recommendations-card">
+          <Card title="Recommendations" className="recommendations-card">
             <div className="recommendations">
               <div className="recommendation-item">
                 <span className="rec-icon">💡</span>
-                <p>Ta en paus var 90:e minut</p>
+                <p>Take a break every 90 minutes</p>
               </div>
               <div className="recommendation-item">
                 <span className="rec-icon">🧘</span>
-                <p>Stretcha under pauser</p>
+                <p>Stretch during breaks</p>
               </div>
               <div className="recommendation-item">
                 <span className="rec-icon">💧</span>
-                <p>Kom ihåg att dricka vatten</p>
+                <p>Remember to drink water</p>
               </div>
             </div>
           </Card>

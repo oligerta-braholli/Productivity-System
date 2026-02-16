@@ -52,9 +52,9 @@ function Dashboard() {
           
           <Calendar />
 
-          <Card title="Energikoll" className="energy-card">
+          <Card title="⚡ Energy Check" className="energy-card">
             <div className="energy-selector">
-              <p>Hur känner du dig?</p>
+              <p>How are you feeling?</p>
               <div className="emoji-grid">
                 {['😴', '😐', '🙂', '😊', '🤩'].map((emoji, index) => (
                   <button 

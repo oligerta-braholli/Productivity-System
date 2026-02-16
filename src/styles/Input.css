@@ -1,11 +1,11 @@
 /* Input.css */
 .input-group {
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
 }
 
 .input-label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   font-weight: 500;
   color: #2c3e50;
   font-size: 0.9rem;
@@ -13,10 +13,10 @@
 
 .input-field {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border: 2px solid #ecf0f1;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-family: inherit;
   transition: border-color 0.3s ease;
 }
@@ -28,4 +28,30 @@
 
 .input-field::placeholder {
   color: #95a5a6;
+}
+
+@media (max-width: 360px) {
+  .input-field {
+    padding: 0.65rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Dark Mode Styles */
+body.dark-mode .input-label {
+  color: #e2e8f0;
+}
+
+body.dark-mode .input-field {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-color: #475569;
+}
+
+body.dark-mode .input-field:focus {
+  border-color: #3b82f6;
+}
+
+body.dark-mode .input-field::placeholder {
+  color: #64748b;
 }

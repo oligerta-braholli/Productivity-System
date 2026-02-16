@@ -13,7 +13,11 @@ function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
-        <h2>logo</h2>
+        <img
+          className="sidebar-logo-image"
+          src="/increase-personal-efficiency-productivity.jpg"
+          alt="Productivity illustration"
+        />
       </div>
       <nav className="sidebar-nav">
         {navItems.map((item) => (

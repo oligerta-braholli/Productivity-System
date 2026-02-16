@@ -2,6 +2,7 @@ import { useState } from 'react';
 import useTimer from '../hooks/useTimer';
 import Button from './Button';
 import Card from './Card';
+import Input from './Input';
 import '../styles/Timer.css';
 
 function TimerComponent({
@@ -13,6 +14,7 @@ function TimerComponent({
   const internalTimer = useTimer();
   const { time, isRunning, isPaused, start, pause, resume, stop, reset, formatTime } = timer ?? internalTimer;
   const [sessionType, setSessionType] = useState('deep-work');
+  const [sessionTitle, setSessionTitle] = useState('');
   const activeSessionType = controlledSessionType ?? sessionType;
   const setSessionTypeValue = onSessionTypeChange ?? setSessionType;
 
@@ -31,20 +33,31 @@ function TimerComponent({
   const handleStop = () => {
     if (time > 0 && onSessionComplete) {
       onSessionComplete({
+        title: sessionTitle.trim() || 'Untitled Session',
         duration: time,
         type: activeSessionType,
         timestamp: new Date().toISOString()
       });
     }
     stop();
+    setSessionTitle(''); // Reset title after stopping
   };
 
 
   return (
-    <Card title="Timer" className="timer-card">
+    <Card title="⏱️ Timer" className="timer-card">
       <div className="timer-display">
-        <div className="time-text">{formatTime(time)}</div>
+        <div className={`time-text ${isRunning && !isPaused ? 'running' : ''}`}>{formatTime(time)}</div> 
       </div>
+
+      <Input
+        label="Session Title"
+        type="text"
+        value={sessionTitle}
+        onChange={(e) => setSessionTitle(e.target.value)}
+        placeholder="What are you working on?"
+        disabled={isRunning}
+      />
 
       <div className="session-type">
         <label>Session Type:</label>

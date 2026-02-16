@@ -10,7 +10,7 @@ function QuickActions({ onActionClick }) {
   ];
 
   return (
-    <Card title="Quick Actions" className="quick-actions-card">
+    <Card title="⚡ Quick Actions" className="quick-actions-card">
       <div className="actions-grid">
         {actions.map((action) => (
           <Button

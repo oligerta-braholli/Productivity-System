@@ -29,7 +29,7 @@ function Calendar() {
   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
                       'July', 'August', 'September', 'October', 'November', 'December'];
   
-  const dayNames = ['M', 'T', 'O', 'T', 'F', 'L','S'];
+  const dayNames = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
   const changeMonth = (offset) => {
     const newDate = new Date(currentDate);
@@ -109,7 +109,7 @@ function Calendar() {
   const selectedBlocks = getBlocksForSelectedDate();
 
   return (
-    <Card title="Kalender & Tidsblock" className="calendar-card">
+      <Card title="📅 Calendar & Time Blocks" className="calendar-card">
       <div className="calendar-header">
         <button onClick={() => changeMonth(-1)} className="month-nav">←</button>
         <h3>{monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}</h3>
@@ -127,7 +127,7 @@ function Calendar() {
       </div>
 
       <div className="time-blocks-section">
-        <h4>Tidsblock för {selectedDate.toLocaleDateString('sv-SE', { day: 'numeric', month: 'long' })}</h4>
+        <h4>Time blocks for {selectedDate.toLocaleDateString('en-US', { day: 'numeric', month: 'long' })}</h4>
         
         <form onSubmit={handleAddTimeBlock} className="add-block-form">
           <input
@@ -142,21 +142,21 @@ function Calendar() {
             value={newBlockEnd}
             onChange={(e) => setNewBlockEnd(e.target.value)}
             required
-            placeholder="Slut"
+            placeholder="End"
           />
           <input
             type="text"
             value={newBlockTitle}
             onChange={(e) => setNewBlockTitle(e.target.value)}
             required
-            placeholder="Aktivitet..."
+            placeholder="Activity..."
           />
           <button type="submit" className="add-block-btn">+</button>
         </form>
 
         <div className="time-blocks-list">
           {selectedBlocks.length === 0 ? (
-            <p className="no-blocks">Inga tidsblock för denna dag</p>
+            <p className="no-blocks">No time blocks for this day</p>
           ) : (
             selectedBlocks.map(block => (
               <div key={block.id} className="time-block-item">

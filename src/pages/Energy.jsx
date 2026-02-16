@@ -23,8 +23,44 @@ function Energy() {
     }
   };
 
+  const getEnergyColor = (level) => {
+    if (level >= 4.5) return '#27ae60'; // Excellent - Green
+    if (level >= 3.5) return '#3498db'; // Good - Blue
+    if (level >= 2.5) return '#f39c12'; // OK - Orange
+    if (level >= 1.5) return '#e67e22'; // Low - Dark Orange
+    return '#e74c3c'; // Exhausted - Red
+  };
+
   const avgEnergy7Days = getAverageEnergy(7);
   const avgEnergy30Days = getAverageEnergy(30);
+
+  // Group energy logs by date and calculate daily averages
+  const getChartData = (days = 14) => {
+    const now = new Date();
+    const data = [];
+    
+    for (let i = days - 1; i >= 0; i--) {
+      const date = new Date(now);
+      date.setDate(date.getDate() - i);
+      const dateString = date.toLocaleDateString('en-US');
+      
+      const logsForDay = energyLogs.filter(log => log.date === dateString);
+      const avgLevel = logsForDay.length > 0
+        ? logsForDay.reduce((sum, log) => sum + log.level, 0) / logsForDay.length
+        : 0;
+      
+      data.push({
+        date: dateString,
+        shortDate: `${date.getDate()}/${date.getMonth() + 1}`,
+        level: avgLevel,
+        count: logsForDay.length
+      });
+    }
+    
+    return data;
+  };
+
+  const chartData = getChartData(14);
 
   return (
     <div className="energy-page">
@@ -67,6 +103,44 @@ function Energy() {
           </div>
         </div>
 
+        <div className="energy-chart">
+          <h3>Energy Trend (Last 14 Days)</h3>
+          {energyLogs.length === 0 ? (
+            <p className="no-chart-data">No data to display. Start logging your energy!</p>
+          ) : (
+            <div className="chart-container">
+              <div className="chart-y-axis">
+                <span>5</span>
+                <span>4</span>
+                <span>3</span>
+                <span>2</span>
+                <span>1</span>
+              </div>
+              <div className="chart-bars">
+                {chartData.map((day, index) => (
+                  <div key={index} className="chart-bar-wrapper">
+                    <div className="chart-bar-container">
+                      <div 
+                        className={`chart-bar ${day.count > 0 ? 'has-data' : 'no-data'}`}
+                        style={{ 
+                          height: `${(day.level / 5) * 100}%`,
+                          backgroundColor: day.count > 0 ? getEnergyColor(day.level) : '#ecf0f1'
+                        }}
+                        title={`${day.shortDate}: ${day.count > 0 ? day.level.toFixed(1) : 'No data'}`}
+                      >
+                        {day.count > 0 && (
+                          <span className="bar-value">{day.level.toFixed(1)}</span>
+                        )}
+                      </div>
+                    </div>
+                    <span className="chart-label">{day.shortDate}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
         <div className="energy-history">
           <h3>Recent Logs</h3>
           {energyLogs.length === 0 ? (
@@ -85,7 +159,7 @@ function Energy() {
                       Level {log.level}
                     </span>
                     <span className="log-date">
-                      {new Date(log.timestamp).toLocaleString('sv-SE')}
+                      {new Date(log.timestamp).toLocaleString('en-US')}
                     </span>
                   </div>
                 ))}

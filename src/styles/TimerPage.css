@@ -94,3 +94,105 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 768px) {
+  .timer-grid {
+    gap: 1rem;
+  }
+
+  .time-inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .break-form {
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .recommendation-item {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timer-grid {
+    gap: 0.75rem;
+  }
+
+  .recommendation-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 360px) {
+  .workday-form {
+    gap: 0.75rem;
+  }
+
+  .recommendation-item {
+    padding: 0.6rem;
+  }
+}
+
+/* Dark Mode Styles */
+body.dark-mode .timer-page {
+  color: #e2e8f0;
+}
+
+body.dark-mode .workday-card {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+body.dark-mode .break-form {
+  border-bottom-color: #334155;
+}
+
+body.dark-mode .breaks-list h4 {
+  color: #e2e8f0;
+}
+
+body.dark-mode .break-item {
+  background: #1e293b;
+  border: 1px solid #334155;
+}
+
+body.dark-mode .break-time {
+  color: #e2e8f0;
+}
+
+body.dark-mode .break-desc {
+  color: #94a3b8;
+}
+
+body.dark-mode .no-breaks {
+  color: #94a3b8;
+}
+
+body.dark-mode .recommendation-item {
+  background: #1e293b;
+  border: 1px solid #334155;
+}
+
+body.dark-mode .recommendation-item p {
+  color: #e2e8f0;
+}
+
+body.dark-mode .workday-form label {
+  color: #e2e8f0;
+}
+
+body.dark-mode .workday-form input,
+body.dark-mode .workday-form textarea,
+body.dark-mode .workday-form select {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-color: #475569;
+}
+
+body.dark-mode .workday-form input:focus,
+body.dark-mode .workday-form textarea:focus,
+body.dark-mode .workday-form select:focus {
+  border-color: #3b82f6;
+}

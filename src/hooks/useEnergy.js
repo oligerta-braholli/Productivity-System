@@ -8,7 +8,7 @@ function useEnergy() {
       id: Date.now(),
       level,
       timestamp: new Date().toISOString(),
-      date: new Date().toLocaleDateString('sv-SE')
+      date: new Date().toLocaleDateString('en-US')
     };
     setEnergyLogs([...energyLogs, newLog]);
   };
