@@ -1,35 +1,73 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import useLocalStorage from '../hooks/useLocalStorage';
 import '../styles/Header.css';
 
 function Header() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useLocalStorage('darkMode', false);
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  // Initialize dark mode on mount
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
+
+  // Update clock every minute
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60000);
+    return () => clearInterval(timer);
+  }, []);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle('dark-mode');
   };
 
+  // Get time-based greeting
+  const getGreeting = () => {
+    const hour = currentTime.getHours();
+    if (hour < 12) return 'Good Morning';
+    if (hour < 18) return 'Good Afternoon';
+    return 'Good Evening';
+  };
+
+  // Get formatted date
+  const getFormattedDate = () => {
+    return currentTime.toLocaleDateString('en-US', { 
+      weekday: 'long', 
+      month: 'short', 
+      day: 'numeric' 
+    });
+  };
+
+
+ 
   return (
     <header className="header">
       <div className="header-content">
-        <h1 className="header-title">Personalized Productivity System</h1>
+        <div className="header-left">
+          <h1 className="header-title">Productivity System</h1>
+        </div>
+        
         <div className="header-actions">
           <button 
             className="theme-toggle"
             onClick={toggleTheme}
             aria-label="Toggle theme"
           >
-            {isDarkMode ? '☀️' : '🌙'}
-          </button>
-          <button className="settings-btn" aria-label="Settings">
-            ⚙️
+            {isDarkMode ? '🌙' : '☀️'}
           </button>
         </div>
       </div>
+      
       <div className="welcome-section">
-        <h2>Welcome, User!</h2>
-        <div className="focus-tag">
-          <span>Today's Focus: Deep Work</span>
+        <div className="greeting">
+          <h2>{getGreeting()}!</h2>
+          <p className="date">{getFormattedDate()}</p>
         </div>
       </div>
     </header>

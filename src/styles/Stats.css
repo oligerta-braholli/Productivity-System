@@ -1,6 +1,6 @@
 /* Stats.css */
 .stats-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   color: white;
 }
 
@@ -11,15 +11,15 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .stat-label {
@@ -28,47 +28,136 @@
 }
 
 .stat-value {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
 }
 
 .week-chart {
-  margin-top: 2rem;
+  margin-top: 0.6rem;
 }
 
 .week-chart h4 {
-  margin-bottom: 1rem;
-  opacity: 0.9;
+  margin-bottom: 0.4rem;
+  opacity: 0.95;
+  font-size: 0.9rem;
 }
 
 .chart-bars {
   display: flex;
-  gap: 1rem;
+  gap: 0.4rem;
   align-items: flex-end;
   justify-content: space-around;
-  height: 150px;
+  height: 70px;
+  padding-top: 1rem;
+  position: relative;
 }
 
 .chart-bar-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
+  flex: 1;
+  max-width: 35px;
+}
+
+.chart-bar-wrapper.today .chart-label {
+  font-weight: 700;
+  color: white;
+  text-decoration: underline;
+}
+
+.bar-value {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 0.15rem;
+  min-height: 1rem;
 }
 
 .chart-bar {
-  width: 30px;
-  background: rgba(255,255,255,0.3);
-  border-radius: 4px 4px 0 0;
-  transition: all 0.3s ease;
-  min-height: 20px;
+  width: 100%;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  transition: all var(--transition-medium);
+  min-height: 3px;
+  box-shadow: var(--shadow-md);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  position: relative;
+}
+
+.chart-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
 .chart-bar:hover {
-  background: rgba(255,255,255,0.5);
+  transform: scaleY(1.1) scaleX(1.05);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.1);
 }
 
 .chart-label {
-  font-size: 0.8rem;
-  opacity: 0.8;
+  font-size: 0.7rem;
+  opacity: 0.9;
+  font-weight: 500;
+  margin-top: 0.15rem;
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .chart-bars {
+    gap: 0.4rem;
+    height: 80px;
+    padding-top: 1.25rem;
+  }
+
+  .chart-bar-wrapper {
+    max-width: 35px;
+  }
+
+  .bar-value {
+    font-size: 0.65rem;
+  }
+
+  .chart-label {
+    font-size: 0.65rem;
+  }
+  
+  .week-chart h4 {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-bars {
+    gap: 0.25rem;
+    height: 70px;
+  }
+
+  .chart-bar-wrapper {
+    max-width: 30px;
+  }
+
+  .bar-value {
+    font-size: 0.6rem;
+  }
+  
+  .chart-label {
+    font-size: 0.6rem;
+  }
+}
+
+/* Dark Mode Styles */
+body.dark-mode .stats-card {
+  background: var(--gradient-primary);
 }

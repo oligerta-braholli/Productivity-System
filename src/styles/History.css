@@ -25,13 +25,13 @@
 
 .stat-label {
   font-size: 0.9rem;
-  color: #7f8c8d;
+  color: var(--text-secondary);
 }
 
 .stat-value {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: var(--text-primary);
 }
 
 .history-filters {
@@ -42,13 +42,13 @@
 
 .history-filters label {
   font-weight: 500;
-  color: #2c3e50;
+  color: var(--text-primary);
 }
 
 .history-filters select {
   padding: 0.5rem;
-  border: 2px solid #ecf0f1;
-  border-radius: 8px;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
   font-family: inherit;
 }
 
@@ -64,50 +64,308 @@
 .sessions-table th {
   text-align: left;
   padding: 1rem;
-  background: #ecf0f1;
+  background: var(--bg-tertiary);
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--text-primary);
 }
 
 .sessions-table td {
   padding: 1rem;
-  border-bottom: 1px solid #ecf0f1;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .sessions-table tbody tr:hover {
-  background: #f8f9fa;
+  background: var(--bg-tertiary);
+}
+
+.session-title {
+  font-weight: 600;
+  color: var(--text-primary);
+  max-width: 250px;
+}
+
+.session-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.edit-btn {
+  color: var(--color-primary);
+}
+
+.edit-btn:hover {
+  background: #e8f4f8;
+}
+
+.delete-btn {
+  color: var(--color-error);
+}
+
+.delete-btn:hover {
+  background: #fde8e7;
+}
+
+.save-btn {
+  color: var(--color-success);
+  font-size: 1.3rem;
+}
+
+.save-btn:hover {
+  background: #e8f6ef;
+}
+
+.cancel-btn {
+  color: var(--text-muted);
+  font-size: 1.3rem;
+}
+
+.cancel-btn:hover {
+  background: #f4f6f7;
+}
+
+.edit-input,
+.edit-select {
+  padding: 0.35rem 0.5rem;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.9rem;
+  width: 100%;
+  max-width: 200px;
+}
+
+.edit-input:focus,
+.edit-select:focus {
+  outline: none;
+  border-color: var(--color-primary-dark);
+}
+
+.edit-select-mobile {
+  padding: 0.5rem;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.session-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.session-card-actions button {
+  flex: 1;
+}
+
+.sessions-cards {
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.session-card {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  padding: 0.85rem;
+  border: 1px solid var(--border-light);
+}
+
+.session-card-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.35rem 0;
+}
+
+.session-card-title {
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 0.25rem;
+}
+
+.session-card-title strong {
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.session-card-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.session-card-value {
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .session-type {
   display: inline-block;
   padding: 0.25rem 0.75rem;
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   font-size: 0.85rem;
   font-weight: 500;
 }
 
 .type-deep-work {
-  background: #3498db;
+  background: var(--color-primary);
   color: white;
 }
 
 .type-meeting {
-  background: #9b59b6;
+  background: var(--color-accent);
   color: white;
 }
 
 .type-break {
-  background: #27ae60;
+  background: var(--color-success);
   color: white;
 }
 
 .type-learning {
-  background: #f39c12;
+  background: var(--color-warning);
   color: white;
 }
 
 .no-sessions {
   text-align: center;
-  color: #95a5a6;
+  color: var(--text-muted);
   padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .history-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .history-stats {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-value {
+    font-size: 1.25rem;
+  }
+
+  .sessions-table th,
+  .sessions-table td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .action-btn {
+    font-size: 1rem;
+    padding: 0.25rem 0.4rem;
+  }
+
+  .edit-input,
+  .edit-select {
+    max-width: 150px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .sessions-list {
+    overflow-x: visible;
+  }
+
+  .sessions-table {
+    display: none;
+  }
+
+  .sessions-cards {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-header {
+    gap: 0.75rem;
+  }
+
+  .sessions-table {
+    min-width: 600px;
+  }
+
+  .sessions-table th,
+  .sessions-table td {
+    padding: 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .action-btn {
+    font-size: 0.95rem;
+    padding: 0.2rem 0.35rem;
+  }
+
+  .session-card-actions {
+    flex-direction: column;
+  }
+
+  .session-card-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .history-header {
+    gap: 0.5rem;
+  }
+
+  .history-filters {
+    width: 100%;
+  }
+
+  .history-filters select {
+    width: 100%;
+  }
+
+  .history-stats {
+    gap: 0.5rem;
+  }
+
+  .stat-value {
+    font-size: 1.1rem;
+  }
+
+  .session-card {
+    padding: 0.7rem;
+  }
+
+  .session-card-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .session-card-label {
+    font-size: 0.7rem;
+  }
+
+  .session-type {
+    font-size: 0.8rem;
+  }
+
+  .session-card-actions {
+    gap: 0.4rem;
+  }
 }

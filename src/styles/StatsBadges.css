@@ -1,0 +1,371 @@
+.stats-badges {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.stat-badge {
+  background: var(--color-primary-light);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 1. Total Time - Blå (matchar focus tag & knappar) */
+.stat-badge:nth-child(1) {
+  background: var(--color-primary-light);
+}
+
+/* 2. Focus Mode - Indigo (matchar logotypen) */
+.stat-badge:nth-child(2) {
+  background: var(--color-primary-light);
+}
+
+.stat-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stat-badge .badge-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.stat-badge .badge-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.stat-badge .badge-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-badge .badge-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+}
+
+.recommendation-badge {
+  background: var(--color-primary-light);
+}
+
+.recommendation-badge .badge-value {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+/* Clickable Energy Badge - Lila (matchar logotypen) */
+.energy-badge-clickable {
+  cursor: pointer;
+  position: relative;
+  background: var(--color-primary-light);
+}
+
+.energy-badge-clickable:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.energy-badge-clickable .badge-hint {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.75rem;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.energy-badge-clickable:hover .badge-hint {
+  opacity: 1;
+}
+
+/* Energy Modal */
+.energy-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.energy-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.energy-modal h3 {
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.modal-subtitle {
+  text-align: center;
+  color: #7f8c8d;
+  margin: 0 0 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+.energy-modal-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.energy-modal-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 0.75rem;
+  border: 3px solid transparent;
+  border-radius: 12px;
+  background: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.energy-modal-btn:hover {
+  background: #e3f2fd;
+  border-color: #3498db;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.energy-modal-btn.current {
+  background: #e8f5e9;
+  border-color: #27ae60;
+}
+
+.energy-modal-btn.current::after {
+  content: '✓';
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: #27ae60;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.modal-emoji {
+  font-size: 2.5rem;
+}
+
+.modal-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.modal-level {
+  font-size: 0.75rem;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.modal-close {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: #ecf0f1;
+  color: #2c3e50;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+  background: #bdc3c7;
+}
+
+/* Success Notification */
+.energy-notification {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 2000;
+  animation: slideInRight 0.4s ease, fadeOut 0.5s ease 2.5s forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.notification-icon {
+  font-size: 1.5rem;
+}
+
+.notification-text {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Dark mode */
+body.dark-mode .energy-modal {
+  background: #2c3e50;
+}
+
+body.dark-mode .energy-modal h3 {
+  color: #ecf0f1;
+}
+
+body.dark-mode .modal-subtitle {
+  color: #95a5a6;
+}
+
+body.dark-mode .energy-modal-btn {
+  background: #34495e;
+  color: #ecf0f1;
+}
+
+body.dark-mode .energy-modal-btn:hover {
+  background: #3d566e;
+}
+
+body.dark-mode .modal-label {
+  color: #ecf0f1;
+}
+
+body.dark-mode .modal-close {
+  background: #34495e;
+  color: #ecf0f1;
+}
+
+body.dark-mode .modal-close:hover {
+  background: #4a5f7f;
+}
+
+/* Dark mode */
+body.dark-mode .stat-badge {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .stat-badge:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .stats-badges {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-badges {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-badge {
+    padding: 1rem;
+  }
+
+  .stat-badge .badge-icon {
+    font-size: 1.5rem;
+  }
+
+  .stat-badge .badge-value {
+    font-size: 1rem;
+  }
+
+  .energy-notification {
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+    padding: 0.85rem 1.25rem;
+  }
+
+  .notification-text {
+    font-size: 0.85rem;
+  }
+
+  .energy-modal {
+    padding: 1.5rem;
+  }
+
+  .energy-modal-options {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .modal-emoji {
+    font-size: 2rem;
+  }
+}

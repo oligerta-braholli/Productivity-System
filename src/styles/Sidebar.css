@@ -5,23 +5,31 @@
   top: 0;
   width: 200px;
   height: 100vh;
-  background: #2c3e50;
+  background: var(--color-secondary-dark);
   color: white;
   padding: 1.5rem 0.75rem;
   z-index: 1000;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .sidebar-logo {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
   padding: 0.5rem;
+}
+
+.sidebar-logo-image {
+  display: block;
+  width: 40%;
+  max-width: 60px;
+  height: auto;
+  margin: 0 auto;
 }
 
 .sidebar-logo h2 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #3498db;
+  color: var(--color-primary-light);
   letter-spacing: 0.5px;
 }
 
@@ -37,19 +45,16 @@
   gap: 0.75rem;
   padding: 0.75rem;
   margin: 0 0.5rem;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   text-decoration: none;
   color: #ecf0f1;
-  transition: all 0.3s ease;
+  transition: all var(--transition-medium);
 }
 
-.nav-item:hover {
-  background: rgba(52, 152, 219, 0.1);
-  color: #3498db;
-}
+F
 
 .nav-item.active {
-  background: #3498db;
+  background: var(--color-primary);
   color: white;
 }
 
@@ -66,10 +71,90 @@
 
 @media (max-width: 768px) {
   .sidebar {
-    width: 80px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: auto;
+    width: 100%;
+    height: auto;
+    padding: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    z-index: 1001;
   }
-  
-  .nav-label {
+
+  .sidebar-logo {
     display: none;
   }
+
+  .sidebar-nav {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0;
+  }
+
+  .nav-item {
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    margin: 0;
+    flex: 1;
+    text-align: center;
+  }
+
+  .nav-icon {
+    font-size: 1.5rem;
+  }
+
+  .nav-label {
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-label {
+    font-size: 0.65rem;
+  }
+
+  .nav-icon {
+    font-size: 1.35rem;
+  }
+
+  .nav-item {
+    padding: 0.4rem 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-label {
+    font-size: 0.6rem;
+  }
+
+  .nav-icon {
+    font-size: 1.25rem;
+  }
+}
+
+/* Dark Mode Styles */
+body.dark-mode .sidebar {
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-xl);
+}
+
+body.dark-mode .sidebar-logo h2 {
+  color: var(--color-secondary-light);
+}
+
+body.dark-mode .nav-item {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .nav-item:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+}
+
+body.dark-mode .nav-item.active {
+  background: #3b82f6;
+  color: white;
 }

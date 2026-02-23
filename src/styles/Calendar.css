@@ -1,69 +1,71 @@
 /* Calendar.css */
 .calendar-card {
-  background: white;
-  padding: 0.15rem !important;
+  background: var(--bg-secondary);
+  padding: 0.6rem !important;
+  width: 100%;
+  border-top-color: var(--color-accent) !important;
 }
 
 .calendar-card .card-title {
-  font-size: 0.6rem !important;
-  margin-bottom: 0.05rem !important;
-  padding-bottom: 0.05rem !important;
+  font-size: 1rem !important;
+  margin-bottom: 0.5rem !important;
+  padding-bottom: 0.35rem !important;
 }
 
 .calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.3rem;
-  padding-bottom: 0.2rem;
-  border-bottom: 1px solid #ecf0f1;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .calendar-header h3 {
-  font-size: 0.75rem;
-  color: #2c3e50;
+  font-size: 0.95rem;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
 .month-nav {
-  background: #3498db;
+  background: var(--color-primary);
   color: white;
   border: none;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background var(--transition-medium);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .month-nav:hover {
-  background: #2980b9;
+  background: var(--color-primary-dark);
 }
 
 .calendar-weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 0rem;
-  margin-bottom: 0.1rem;
+  gap: 0.1rem;
+  margin-bottom: 0.2rem;
 }
 
 .weekday {
   text-align: center;
   font-weight: 600;
-  color: #7f8c8d;
-  font-size: 0.55rem;
-  padding: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  padding: 0.3rem;
 }
 
 .calendar-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 0.1rem;
-  margin-bottom: 0.3rem;
+  gap: 0.15rem;
+  margin-bottom: 0.5rem;
 }
 
 .calendar-day {
@@ -71,17 +73,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f8f9fa;
-  border-radius: 3px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.8rem;
-  color: #2c3e50;
+  transition: all var(--transition-medium);
+  font-size: 0.9rem;
+  color: var(--text-primary);
 }
 
 .calendar-day:hover:not(.empty) {
-  background: #e3f2fd;
+  background: var(--color-primary-light);
   transform: scale(1.05);
 }
 
@@ -91,7 +93,7 @@
 }
 
 .calendar-day.today {
-  background: #3498db;
+  background: var(--color-primary);
   color: white;
   font-weight: 100;
 }
@@ -107,39 +109,47 @@
 }
 
 .time-blocks-section {
-  margin-top: 0.3rem;
-  padding-top: 0.3rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
   border-top: 1px solid #ecf0f1;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 4px;
 }
 
 
 .time-blocks-section h3 {
-  margin-bottom: 0.3rem;
-
+  margin-bottom: 0.5rem;
   color: #2c3e50;
-  font-size: 0.65rem;
+  font-size: 0.9rem;
+}
+
+.time-blocks-section h4 {
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  font-size: 0.9rem;
 }
 
 .add-block-form {
   display: grid;
   grid-template-columns: auto auto 1fr auto;
-  gap: 0.2rem;
-  margin-bottom: 0.3rem;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .add-block-form input[type="time"],
 .add-block-form input[type="text"] {
-  padding: 0.2rem;
+  padding: 0.4rem;
   border: 1px solid #ecf0f1;
-  border-radius: 3px;
+  border-radius: 4px;
   font-family: inherit;
-
-  font-size: 1.25rem;
+  font-size: 0.9rem;
+  background: white;
+  color: #2c3e50;
 }
 
 .add-block-form input[type="time"] {
-  width: 100px;
-
+  width: 110px;
 }
 
 .add-block-form input[type="text"]:focus,
@@ -152,11 +162,9 @@
   background: #27ae60;
   color: white;
   border: none;
-
-  width: 36px;
-  height: 46px;
-
-  border-radius: 3px;
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
   font-size: 0.9rem;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -172,32 +180,71 @@
 .time-blocks-list {
   display: flex;
   flex-direction: column;
-
-  gap: 0.4rem;
-  max-height: 50px;
-
+  gap: 0.5rem;
+  max-height: 120px;
   overflow-y: auto;
 }
 
 .no-blocks {
   text-align: center;
   color: #95a5a6;
-  padding: 0.3rem;
-  font-size: 0.6rem;
+  padding: 0.5rem;
+  font-size: 0.85rem;
 }
 
 .time-block-item {
   display: grid;
   grid-template-columns: auto 1fr auto;
-
-  gap: 1.5rem;
+  gap: 1rem;
   align-items: center;
-  padding: 0.45rem;
-
+  padding: 0.5rem;
   background: #f8f9fa;
-  border-radius: 3px;
-  border-left: 2px solid #3498db;
+  border-radius: 4px;
+  border-left: 3px solid #3498db;
   transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .calendar-card {
+    padding: 0.5rem !important;
+  }
+
+  .calendar-header h3 {
+    font-size: 0.85rem;
+  }
+
+  .weekday {
+    font-size: 0.6rem;
+    padding: 0.25rem;
+  }
+
+  .calendar-day {
+    font-size: 0.7rem;
+  }
+
+  .add-block-form {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.35rem;
+  }
+
+  .add-block-form input[type="time"] {
+    width: 100%;
+  }
+
+  .add-block-form input[type="text"] {
+    grid-column: 1 / -1;
+  }
+
+  .add-block-btn {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 40px;
+  }
+
+  .time-block-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
 }
 
 .time-block-item:hover {
@@ -208,28 +255,21 @@
 .block-time {
   font-weight: 600;
   color: #3498db;
-
-  font-size: 1.17rem;
-
+  font-size: 0.9rem;
   white-space: nowrap;
-  gap: flex;
 }
 
 .block-title {
   color: #2c3e50;
-
-  font-size: 1.27rem;
-
+  font-size: 0.9rem;
 }
 
 .delete-block-btn {
   background: #e74c3c;
   color: white;
   border: none;
-
-  width: 38px;
-  height: 38px;
-
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   font-size: 0.75rem;
   cursor: pointer;
@@ -242,4 +282,115 @@
 
 .delete-block-btn:hover {
   background: #c0392b;
+}
+
+/* Dark Mode Styles */
+body.dark-mode .calendar-card {
+  background: var(--gradient-subtle);
+}
+
+body.dark-mode .calendar-header {
+  border-bottom-color: var(--border-light);
+}
+
+body.dark-mode .calendar-header h3 {
+  color: var(--text-primary);
+}
+
+body.dark-mode .month-nav {
+  background: var(--color-secondary);
+}
+
+body.dark-mode .month-nav:hover {
+  background: var(--color-secondary-light);
+}
+
+body.dark-mode .weekday {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .calendar-day {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+body.dark-mode .calendar-day:hover:not(.empty) {
+  background: var(--color-secondary-dark);
+  border-color: var(--color-secondary);
+}
+
+body.dark-mode .calendar-day.empty {
+  background: transparent;
+  border: none;
+}
+
+body.dark-mode .calendar-day.today {
+  background: var(--color-secondary);
+  color: white;
+  border-color: var(--color-secondary-light);
+}
+
+body.dark-mode .calendar-day.selected {
+  background: var(--color-secondary-dark);
+  border-color: var(--color-secondary-light);
+  box-shadow: 0 0 0 2px var(--color-secondary);
+}
+
+body.dark-mode .time-blocks-section {
+  background: var(--bg-primary);
+  border-top-color: var(--border-light);
+}
+
+body.dark-mode .time-blocks-section h3,
+body.dark-mode .time-blocks-section h4 {
+  color: var(--text-primary);
+}
+
+body.dark-mode .add-block-form input[type="time"],
+body.dark-mode .add-block-form input[type="text"] {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-light);
+}
+
+body.dark-mode .add-block-form input:focus {
+  border-color: var(--color-secondary);
+}
+
+body.dark-mode .add-block-btn {
+  background: var(--color-secondary);
+}
+
+body.dark-mode .add-block-btn:hover {
+  background: var(--color-secondary-light);
+}
+
+body.dark-mode .no-blocks {
+  color: var(--text-muted);
+}
+
+body.dark-mode .time-block-item {
+  background: var(--bg-secondary);
+  border-color: var(--border-light);
+}
+
+body.dark-mode .time-block-item:hover {
+  background: var(--bg-tertiary);
+}
+
+body.dark-mode .block-time {
+  color: var(--color-secondary-light);
+}
+
+body.dark-mode .block-title {
+  color: var(--text-primary);
+}
+
+body.dark-mode .delete-block-btn {
+  background: var(--color-error);
+}
+
+body.dark-mode .delete-block-btn:hover {
+  background: #dc2626;
 }

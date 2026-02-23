@@ -1,21 +1,68 @@
 /* Card.css */
 .card {
-  background: white;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  margin-bottom: 1rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: 0.6rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 0.4rem;
+  transition: all var(--transition-medium);
+  border-top: 3px solid transparent;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
 .card-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #ecf0f1;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--border-light);
 }
 
 .card-content {
-  color: #34495e;
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+  }
+
+  .card-title {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .card {
+    padding: 0.65rem;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+  }
+}
+
+/* Dark Mode Styles */
+body.dark-mode .card {
+  background: var(--gradient-subtle);
+  box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .card:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+body.dark-mode .card-title {
+  color: var(--text-primary);
+  border-bottom-color: var(--border-light);
+}
+
+body.dark-mode .card-content {
+  color: var(--text-primary);
 }

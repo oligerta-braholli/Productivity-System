@@ -1,22 +1,31 @@
 /* Dashboard.css */
 .dashboard {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .dashboard-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .dashboard-left,
 .dashboard-right {
   display: flex;
   flex-direction: column;
+  gap: 0.4rem;
+}
+
+.dashboard-left > *,
+.dashboard-right > * {
+  margin-bottom: 0 !important;
 }
 
 .calendar-card {
-  margin-top: 0.75rem;
+  margin-top: 0;
 }
 
 .calendar-placeholder {
@@ -35,50 +44,135 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ecf0f1;
-  border-radius: 8px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background var(--transition-medium);
 }
 
 .calendar-day:hover {
-  background: #3498db;
+  background: var(--color-primary);
   color: white;
 }
 
 .energy-card {
-  margin-top: 0.75rem;
+  margin-top: 0;
+  border-top-color: var(--color-success) !important;
+  background: var(--gradient-subtle);
 }
 
 .energy-selector {
   text-align: center;
 }
 
+.energy-selector p {
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+
 .emoji-grid {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
 }
 
 .emoji-btn {
-  font-size: 2rem;
-  background: none;
-  border: none;
+  font-size: 1.3rem;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-light);
   cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 8px;
-  transition: transform 0.2s ease;
+  padding: 0.3rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-medium);
 }
 
 .emoji-btn:hover {
-  transform: scale(1.2);
-  background: #ecf0f1;
+  transform: scale(1.15);
+  background: var(--color-success);
+  border-color: var(--color-success);
+  box-shadow: var(--shadow-md);
+}
+
+.emoji-btn.active {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
+  transform: scale(1.1);
 }
 
 @media (max-width: 1024px) {
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    gap: 0.75rem;
+  }
+
+  .dashboard-left,
+  .dashboard-right {
+    gap: 0.75rem;
+  }
+
+  .emoji-grid {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-grid {
+    gap: 0.5rem;
+  }
+
+  .emoji-btn {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .emoji-btn {
+    font-size: 1.4rem;
+  }
+}
+
+/* Dark Mode Styles */
+body.dark-mode .energy-card {
+  background: var(--gradient-subtle);
+}
+
+body.dark-mode .energy-selector p {
+  color: var(--text-primary);
+}
+
+body.dark-mode .emoji-btn {
+  background: var(--bg-secondary);
+  border-color: var(--border-light);
+}
+
+body.dark-mode .emoji-btn:hover {
+  background: var(--color-success);
+  border-color: var(--color-success);
+}
+
+body.dark-mode .emoji-btn.active {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
+}
+
+body.dark-mode .calendar-day {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+body.dark-mode .calendar-day:hover {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary-light);
+  color: white;
 }

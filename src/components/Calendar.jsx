@@ -218,7 +218,7 @@ function startAlarmLoop({ intervalMs = 900, totalMs = 15000  } = {}) {
 
   // ===== UI =====
   return (
-    <Card title="Kalender & Tidsblock" className="calendar-card">
+      <Card title="📅 Calendar & Time Blocks" className="calendar-card">
       <div className="calendar-header">
         <button onClick={() => changeMonth(-1)} className="month-nav">←</button>
 
@@ -262,7 +262,7 @@ function startAlarmLoop({ intervalMs = 900, totalMs = 15000  } = {}) {
             value={newBlockEnd}
             onChange={(e) => setNewBlockEnd(e.target.value)}
             required
-            placeholder="Slut"
+            placeholder="End"
           />
 
           <input
@@ -270,7 +270,7 @@ function startAlarmLoop({ intervalMs = 900, totalMs = 15000  } = {}) {
             value={newBlockTitle}
             onChange={(e) => setNewBlockTitle(e.target.value)}
             required
-            placeholder="Aktivitet..."
+            placeholder="Activity..."
           />
 
           <input
@@ -287,7 +287,7 @@ function startAlarmLoop({ intervalMs = 900, totalMs = 15000  } = {}) {
 
         <div className="time-blocks-list">
           {selectedBlocks.length === 0 ? (
-            <p className="no-blocks">Inga tidsblock för denna dag</p>
+            <p className="no-blocks">No time blocks for this day</p>
           ) : (
             selectedBlocks.map((block) => (
               <div key={block.id} className="time-block-item">

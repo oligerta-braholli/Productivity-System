@@ -1,0 +1,159 @@
+.circular-timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.circular-timer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.timer-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.timer-svg circle {
+  transition: stroke-dasharray 0.3s ease;
+}
+
+.timer-svg circle.timer-running {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(102, 126, 234, 0.8));
+  }
+}
+
+.timer-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.timer-display {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2d3748;
+  font-family: 'Courier New', monospace;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.timer-display.running {
+  animation: pulse-text 2s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.timer-status {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timer-controls-circular {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.timer-controls-circular button {
+  min-width: 120px;
+}
+
+.work-mode-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.work-mode-buttons button {
+  flex: 1;
+  min-width: 140px;
+  padding: 0.875rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* Dark mode */
+body.dark-mode .circular-timer-container {
+  background: #1e293b;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .timer-display {
+  color: #e2e8f0;
+}
+
+body.dark-mode .timer-status {
+  color: #94a3b8;
+}
+
+body.dark-mode .timer-svg circle:first-child {
+  stroke: rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .circular-timer {
+    width: 250px;
+    height: 250px;
+  }
+
+  .timer-display {
+    font-size: 2.5rem;
+  }
+
+  .work-mode-buttons {
+    flex-direction: column;
+  }
+
+  .work-mode-buttons button {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .circular-timer-container {
+    padding: 1.5rem;
+  }
+
+  .circular-timer {
+    width: 200px;
+    height: 200px;
+  }
+
+  .timer-display {
+    font-size: 2rem;
+  }
+
+  .timer-status {
+    font-size: 0.875rem;
+  }
+}
