@@ -5,11 +5,11 @@
   top: 0;
   width: 200px;
   height: 100vh;
-  background: var(--color-secondary-dark);
+  background: var(--color-primary-light);
   color: white;
   padding: 1.5rem 0.75rem;
   z-index: 1000;
-  box-shadow: var(--shadow-lg);
+  ;
 }
 
 .sidebar-logo {
