@@ -5,11 +5,11 @@
   top: 0;
   width: 200px;
   height: 100vh;
-  background: #2c3e50;
+  background: var(--color-secondary-dark);
   color: white;
   padding: 1.5rem 0.75rem;
   z-index: 1000;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .sidebar-logo {
@@ -20,8 +20,8 @@
 
 .sidebar-logo-image {
   display: block;
-  width: 50%;
-  max-width: 85px;
+  width: 40%;
+  max-width: 60px;
   height: auto;
   margin: 0 auto;
 }
@@ -29,7 +29,7 @@
 .sidebar-logo h2 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #3498db;
+  color: var(--color-primary-light);
   letter-spacing: 0.5px;
 }
 
@@ -45,16 +45,16 @@
   gap: 0.75rem;
   padding: 0.75rem;
   margin: 0 0.5rem;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   text-decoration: none;
   color: #ecf0f1;
-  transition: all 0.3s ease;
+  transition: all var(--transition-medium);
 }
 
 F
 
 .nav-item.active {
-  background: #3498db;
+  background: var(--color-primary);
   color: white;
 }
 
@@ -137,16 +137,16 @@ F
 
 /* Dark Mode Styles */
 body.dark-mode .sidebar {
-  background: #0f172a;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-xl);
 }
 
 body.dark-mode .sidebar-logo h2 {
-  color: #60a5fa;
+  color: var(--color-secondary-light);
 }
 
 body.dark-mode .nav-item {
-  color: #94a3b8;
+  color: var(--text-secondary);
 }
 
 body.dark-mode .nav-item:hover {

@@ -11,6 +11,13 @@ function useEnergy() {
       date: new Date().toLocaleDateString('en-US')
     };
     setEnergyLogs([...energyLogs, newLog]);
+    
+    // Also update current energy for badges
+    try {
+      localStorage.setItem('currentEnergy', JSON.stringify(level));
+    } catch (error) {
+      console.log('Failed to update currentEnergy:', error);
+    }
   };
 
   const getAverageEnergy = (days = 7) => {

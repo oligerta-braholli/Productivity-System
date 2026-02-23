@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import Button from './Button';
 import Card from './Card';
 import '../styles/QuickActions.css';
 
-function QuickActions({ onActionClick }) {
+function QuickActions() {
   const actions = [
     { id: 'deep-work', label: 'Start Deep Work', variant: 'primary' },
     { id: 'meeting', label: 'Start Meeting', variant: 'info' },
@@ -13,13 +14,11 @@ function QuickActions({ onActionClick }) {
     <Card title="⚡ Quick Actions" className="quick-actions-card">
       <div className="actions-grid">
         {actions.map((action) => (
-          <Button
-            key={action.id}
-            variant={action.variant}
-            onClick={() => onActionClick && onActionClick(action.id)}
-          >
-            {action.label}
-          </Button>
+          <Link key={action.id} to="/timer" style={{ textDecoration: 'none' }}>
+            <Button variant={action.variant}>
+              {action.label}
+            </Button>
+          </Link>
         ))}
       </div>
     </Card>

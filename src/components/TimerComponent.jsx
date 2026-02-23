@@ -45,7 +45,7 @@ function TimerComponent({
 
 
   return (
-    <Card title="⏱️ Timer" className="timer-card">
+    <Card className="timer-card">
       <div className="timer-display">
         <div className={`time-text ${isRunning && !isPaused ? 'running' : ''}`}>{formatTime(time)}</div> 
       </div>

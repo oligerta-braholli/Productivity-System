@@ -1,6 +1,6 @@
 /* Stats.css */
 .stats-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   color: white;
 }
 
@@ -77,10 +77,10 @@
 
 .chart-bar {
   width: 100%;
-  border-radius: 6px 6px 0 0;
-  transition: all 0.3s ease;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  transition: all var(--transition-medium);
   min-height: 3px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-md);
   border: 1.5px solid rgba(255,255,255,0.3);
   position: relative;
 }
@@ -93,12 +93,12 @@
   right: 0;
   height: 30%;
   background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 100%);
-  border-radius: 4px 4px 0 0;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
 .chart-bar:hover {
   transform: scaleY(1.1) scaleX(1.05);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: var(--shadow-lg);
   filter: brightness(1.1);
 }
 
@@ -159,5 +159,5 @@
 
 /* Dark Mode Styles */
 body.dark-mode .stats-card {
-  background: linear-gradient(135deg, #1e3a8a 0%, #581c87 100%);
+  background: var(--gradient-primary);
 }

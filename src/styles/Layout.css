@@ -2,7 +2,7 @@
 .app-container {
   display: flex;
   min-height: 100vh;
-  background: #f5f6fa;
+  background: var(--bg-primary);
 }
 
 .main-wrapper {
@@ -48,9 +48,9 @@
 
 /* Dark Mode Styles */
 body.dark-mode .app-container {
-  background: #0f172a;
+  background: var(--bg-primary);
 }
 
 body.dark-mode .main-content {
-  background: #0f172a;
+  background: var(--bg-primary);
 }

@@ -1,7 +1,7 @@
 /* QuickActions.css */
 .quick-actions-card {
-  background: linear-gradient(135deg, #fef9f5 0%, #f8f9fa 100%);
-  border-top-color: #f39c12 !important;
+  background: var(--gradient-subtle);
+  border-top-color: var(--color-warning) !important;
 }
 
 .actions-grid {
@@ -18,16 +18,16 @@
 
 /* Dark Mode Styles */
 body.dark-mode .quick-actions-card {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  background: var(--gradient-subtle);
 }
 
 body.dark-mode .actions-grid .btn {
-  background: #1e40af;
-  color: #e2e8f0;
-  border-color: #1e40af;
+  background: var(--color-secondary-dark);
+  color: var(--text-primary);
+  border-color: var(--color-secondary-dark);
 }
 
 body.dark-mode .actions-grid .btn:hover {
-  background: #1e3a8a;
-  border-color: #1e3a8a;
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
 }

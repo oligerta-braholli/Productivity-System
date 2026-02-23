@@ -120,15 +120,19 @@ function TimerPage() {
             <div className="recommendations">
               <div className="recommendation-item">
                 <span className="rec-icon">💡</span>
-                <p>Take a break every 90 minutes</p>
+                <p>Take breaks every 90 minutes for peak focus</p>
               </div>
               <div className="recommendation-item">
                 <span className="rec-icon">🧘</span>
-                <p>Stretch during breaks</p>
+                <p>Stretch during breaks to stay energized</p>
               </div>
               <div className="recommendation-item">
                 <span className="rec-icon">💧</span>
-                <p>Remember to drink water</p>
+                <p>Stay hydrated - you're doing amazing!</p>
+              </div>
+              <div className="recommendation-item">
+                <span className="rec-icon">🎯</span>
+                <p>One task at a time - you've got this!</p>
               </div>
             </div>
           </Card>

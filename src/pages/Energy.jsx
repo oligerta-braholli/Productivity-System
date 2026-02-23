@@ -8,6 +8,12 @@ function Energy() {
   const { energyLogs, logEnergy, getAverageEnergy } = useEnergy();
   const [selectedLevel, setSelectedLevel] = useState(null);
 
+  // Initialize with a positive default if no logs
+  const getCurrentEnergy = () => {
+    if (energyLogs.length === 0) return 3; // Default to OK level
+    return energyLogs[energyLogs.length - 1].level;
+  };
+
   const energyLevels = [
     { level: 1, emoji: '😴', label: 'Exhausted' },
     { level: 2, emoji: '😐', label: 'Low' },
@@ -33,6 +39,46 @@ function Energy() {
 
   const avgEnergy7Days = getAverageEnergy(7);
   const avgEnergy30Days = getAverageEnergy(30);
+
+  // Get personalized positive recommendations based on energy
+  const getPersonalizedTips = () => {
+    const currentLevel = selectedLevel || getCurrentEnergy();
+
+    const tips = {
+      1: [
+        { icon: '🛌', text: 'You deserve rest! Taking breaks makes you stronger.', type: 'rest' },
+        { icon: '💧', text: 'Hydrate yourself - small steps lead to big changes!', type: 'health' },
+        { icon: '🎵', text: 'Listen to your favorite music to boost your mood.', type: 'mood' },
+        { icon: '🌳', text: 'A short walk can work wonders for your energy.', type: 'activity' }
+      ],
+      2: [
+        { icon: '☕', text: 'Perfect time for easy wins! Start with simple tasks.', type: 'productivity' },
+        { icon: '🧘', text: 'A 5-minute stretch will help you feel refreshed.', type: 'health' },
+        { icon: '📱', text: 'Clear small items from your to-do list - you\'ve got this!', type: 'productivity' },
+        { icon: '🌞', text: 'Get some natural light - it boosts energy naturally.', type: 'wellness' }
+      ],
+      3: [
+        { icon: '📝', text: 'You\'re in the zone! Great time for focused work.', type: 'productivity' },
+        { icon: '🎯', text: 'Steady progress wins the race - keep going!', type: 'motivation' },
+        { icon: '🎨', text: 'Balance is key - mix challenging and lighter tasks.', type: 'strategy' },
+        { icon: '💪', text: 'You\'re doing great! Consistency is your superpower.', type: 'motivation' }
+      ],
+      4: [
+        { icon: '🚀', text: 'Amazing energy! Tackle your most important task now.', type: 'productivity' },
+        { icon: '⭐', text: 'You\'re unstoppable today - ride this wave!', type: 'motivation' },
+        { icon: '🎓', text: 'Perfect time for learning something new and challenging.', type: 'growth' },
+        { icon: '🏆', text: 'High energy = high potential. Make it count!', type: 'motivation' }
+      ],
+      5: [
+        { icon: '🌟', text: 'Incredible! You\'re at peak performance - amazing work!', type: 'motivation' },
+        { icon: '💎', text: 'This is your time to shine! Deep work mode activated.', type: 'productivity' },
+        { icon: '🎊', text: 'You\'re crushing it! Channel this energy into your goals.', type: 'motivation' },
+        { icon: '🔥', text: 'Exceptional energy! Remember to stay hydrated though.', type: 'wellness' }
+      ]
+    };
+
+    return tips[currentLevel] || tips[3];
+  };
 
   // Group energy logs by date and calculate daily averages
   const getChartData = (days = 14) => {
@@ -139,6 +185,19 @@ function Energy() {
               </div>
             </div>
           )}
+        </div>
+
+        <div className="energy-recommendations">
+          <h3>💡 Personalized Tips for You</h3>
+          <div className="tips-grid">
+            {getPersonalizedTips().map((tip, index) => (
+              <div key={index} className="tip-card">
+                <span className="tip-icon">{tip.icon}</span>
+                <p className="tip-text">{tip.text}</p>
+                <span className="tip-type">{tip.type}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="energy-history">

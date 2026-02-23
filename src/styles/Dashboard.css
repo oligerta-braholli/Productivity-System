@@ -1,12 +1,15 @@
 /* Dashboard.css */
 .dashboard {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .dashboard-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
+  gap: 1.5rem;
 }
 
 .dashboard-left,
@@ -41,22 +44,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ecf0f1;
-  border-radius: 8px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background var(--transition-medium);
 }
 
 .calendar-day:hover {
-  background: #3498db;
+  background: var(--color-primary);
   color: white;
 }
 
 .energy-card {
   margin-top: 0;
-  border-top-color: #27ae60 !important;
-  background: linear-gradient(135deg, #f5fef9 0%, #f8f9fa 100%);
+  border-top-color: var(--color-success) !important;
+  background: var(--gradient-subtle);
 }
 
 .energy-selector {
@@ -77,19 +80,26 @@
 
 .emoji-btn {
   font-size: 1.3rem;
-  background: white;
-  border: 2px solid #ecf0f1;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-light);
   cursor: pointer;
   padding: 0.3rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-medium);
 }
 
 .emoji-btn:hover {
   transform: scale(1.15);
-  background: #27ae60;
-  border-color: #27ae60;
-  box-shadow: 0 4px 8px rgba(39, 174, 96, 0.2);
+  background: var(--color-success);
+  border-color: var(--color-success);
+  box-shadow: var(--shadow-md);
+}
+
+.emoji-btn.active {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
+  transform: scale(1.1);
 }
 
 @media (max-width: 1024px) {
@@ -132,31 +142,37 @@
 
 /* Dark Mode Styles */
 body.dark-mode .energy-card {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  background: var(--gradient-subtle);
 }
 
 body.dark-mode .energy-selector p {
-  color: #e2e8f0;
+  color: var(--text-primary);
 }
 
 body.dark-mode .emoji-btn {
-  background: #1e293b;
-  border-color: #334155;
+  background: var(--bg-secondary);
+  border-color: var(--border-light);
 }
 
 body.dark-mode .emoji-btn:hover {
-  background: #10b981;
-  border-color: #10b981;
+  background: var(--color-success);
+  border-color: var(--color-success);
+}
+
+body.dark-mode .emoji-btn.active {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
 }
 
 body.dark-mode .calendar-day {
-  background: #1e293b;
-  color: #e2e8f0;
-  border: 1px solid #334155;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
 }
 
 body.dark-mode .calendar-day:hover {
-  background: #3b82f6;
-  border-color: #60a5fa;
+  background: var(--color-secondary);
+  border-color: var(--color-secondary-light);
   color: white;
 }
