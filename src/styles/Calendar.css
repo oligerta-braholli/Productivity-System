@@ -1,0 +1,228 @@
+/* Calendar.css */
+.calendar-card {
+  background: white;
+  padding: 0.75rem !important;
+}
+
+.calendar-card .card-title {
+  font-size: 0.85rem !important;
+  margin-bottom: 0.5rem !important;
+  padding-bottom: 0.3rem !important;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.calendar-header h3 {
+  font-size: 0.85rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.month-nav {
+  background: #3498db;
+  color: white;
+  border: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.month-nav:hover {
+  background: #2980b9;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.15rem;
+  margin-bottom: 0.2rem;
+}
+
+.weekday {
+  text-align: center;
+  font-weight: 600;
+  color: #7f8c8d;
+  font-size: 0.65rem;
+  padding: 0.15rem;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.7rem;
+  color: #2c3e50;
+}
+
+.calendar-day:hover:not(.empty) {
+  background: #e3f2fd;
+  transform: scale(1.05);
+}
+
+.calendar-day.empty {
+  background: transparent;
+  cursor: default;
+}
+
+.calendar-day.today {
+  background: #3498db;
+  color: white;
+  font-weight: 700;
+}
+
+.calendar-day.selected {
+  background: #27ae60;
+  color: white;
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.3);
+}
+
+.calendar-day.today.selected {
+  background: linear-gradient(135deg, #3498db 50%, #27ae60 50%);
+}
+
+.time-blocks-section {
+  margin-top: 0.5rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid #ecf0f1;
+}
+
+.time-blocks-section h4 {
+  margin-bottom: 0.3rem;
+  color: #2c3e50;
+  font-size: 0.7rem;
+}
+
+.add-block-form {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  gap: 0.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.add-block-form input[type="time"],
+.add-block-form input[type="text"] {
+  padding: 0.3rem;
+  border: 1px solid #ecf0f1;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 0.75rem;
+}
+
+.add-block-form input[type="time"] {
+  width: 70px;
+}
+
+.add-block-form input[type="text"]:focus,
+.add-block-form input[type="time"]:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.add-block-btn {
+  background: #27ae60;
+  color: white;
+  border: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 3px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-block-btn:hover {
+  background: #229954;
+}
+
+.time-blocks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.no-blocks {
+  text-align: center;
+  color: #95a5a6;
+  padding: 0.5rem;
+  font-size: 0.7rem;
+}
+
+.time-block-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.3rem;
+  align-items: center;
+  padding: 0.25rem;
+  background: #f8f9fa;
+  border-radius: 3px;
+  border-left: 2px solid #3498db;
+  transition: all 0.3s ease;
+}
+
+.time-block-item:hover {
+  background: #ecf0f1;
+  transform: translateX(2px);
+}
+
+.block-time {
+  font-weight: 600;
+  color: #3498db;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.block-title {
+  color: #2c3e50;
+  font-size: 0.75rem;
+}
+
+.delete-block-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.delete-block-btn:hover {
+  background: #c0392b;
+}
