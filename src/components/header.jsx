@@ -44,20 +44,30 @@ function Header() {
     });
   };
 
+  const getFormattedTime = () => {
+    return currentTime.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+  };
+
 
  
   return (
     <header className="header">
       <div className="header-content">
         <div className="header-left">
-          <h1 className="header-title">Productivity System</h1>
+          <h1 className="header-title">Work Flow</h1>
+          <p className="header-subtitle">Plan your day with focus</p>
         </div>
         
         <div className="header-actions">
           <button 
             className="theme-toggle"
             onClick={toggleTheme}
-            aria-label="Toggle theme"
+            aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={isDarkMode ? 'Ljust läge' : 'Mörkt läge'}
           >
             {isDarkMode ? '🌙' : '☀️'}
           </button>
@@ -67,9 +77,11 @@ function Header() {
       <div className="welcome-section">
         <div className="greeting">
           <h2>{getGreeting()}!</h2>
-          <p className="date">{getFormattedDate()}</p>
+          <p className="date">{getFormattedDate()} • {getFormattedTime()}</p>
         </div>
       </div>
+
+      <div className="header-accent" aria-hidden="true" />
     </header>
   );
 }
