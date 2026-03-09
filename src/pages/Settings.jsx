@@ -6,22 +6,22 @@ import Input from '../components/Input';
 import '../styles/Settings.css';
 
 function Settings() {
-  // User Profile
+  // Användarprofil
   const [userName, setUserName] = useLocalStorage('userName', '');
   const [dailyGoal, setDailyGoal] = useLocalStorage('dailyGoal', 8);
   
-  // Theme
+  // Tema
   const [darkMode, setDarkMode] = useLocalStorage('darkMode', false);
   
-  // Timer Durations (in minutes)
+  // Timerlängder (i minuter)
   const [deepWorkDuration, setDeepWorkDuration] = useLocalStorage('deepWorkDuration', 90);
   const [meetingDuration, setMeetingDuration] = useLocalStorage('meetingDuration', 30);
   const [breakDuration, setBreakDuration] = useLocalStorage('breakDuration', 15);
   
-  // Notifications
+  // Notifikationer
   const [notificationsEnabled, setNotificationsEnabled] = useLocalStorage('notificationsEnabled', false);
   
-  // Local state for editing
+  // Lokal state för redigering
   const [tempUserName, setTempUserName] = useState(userName);
   const [tempDailyGoal, setTempDailyGoal] = useState(dailyGoal);
   const [tempDeepWork, setTempDeepWork] = useState(deepWorkDuration);
@@ -89,7 +89,7 @@ function Settings() {
 
   return (
     <div className="settings-page">
-      {/* Profile Settings */}
+      {/* Profilinställningar */}
       <Card title="👤 Profile Settings" className="settings-card">
         <div className="settings-section">
           <Input
@@ -115,7 +115,7 @@ function Settings() {
         </div>
       </Card>
 
-      {/* Appearance Settings */}
+      {/* Utseendeinställningar */}
       <Card title="🎨 Appearance" className="settings-card">
         <div className="settings-section">
           <div className="setting-item">
@@ -135,7 +135,7 @@ function Settings() {
         </div>
       </Card>
 
-      {/* Timer Preferences */}
+      {/* Timerinställningar */}
       <Card title="⏱️ Timer Preferences" className="settings-card">
         <div className="settings-section">
           <Input
@@ -171,7 +171,7 @@ function Settings() {
         </div>
       </Card>
 
-      {/* Notifications */}
+      {/* Notifikationer */}
       <Card title="🔔 Notifications" className="settings-card">
         <div className="settings-section">
           <div className="setting-item">
@@ -191,7 +191,7 @@ function Settings() {
         </div>
       </Card>
 
-      {/* Data Management */}
+      {/* Datahantering */}
       <Card title="💾 Data Management" className="settings-card">
         <div className="settings-section">
           <div className="data-actions">

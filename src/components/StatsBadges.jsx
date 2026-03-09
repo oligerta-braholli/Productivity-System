@@ -6,7 +6,7 @@ function StatsBadges({ sessions = [] }) {
   const { logEnergy } = useEnergy();
   const [showEnergyModal, setShowEnergyModal] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
-  // Read directly from localStorage to ensure fresh data
+  // Läs direkt från localStorage för att säkerställa färsk data
   const getCurrentEnergy = () => {
     try {
       const stored = localStorage.getItem('currentEnergy');
@@ -16,6 +16,7 @@ function StatsBadges({ sessions = [] }) {
     }
   };
 
+  // Hämtar nuvarande fokusläge från localStorage
   const getCurrentMode = () => {
     try {
       const stored = localStorage.getItem('currentMode');
@@ -28,7 +29,7 @@ function StatsBadges({ sessions = [] }) {
   const [currentEnergy, setCurrentEnergy] = useState(getCurrentEnergy());
   const [currentMode, setCurrentMode] = useState(getCurrentMode());
 
-  // Calculate total time for today using useMemo
+  // Beräknar total tid för idag med useMemo
   const totalTime = useMemo(() => {
     const today = new Date().toLocaleDateString('en-US');
     const todaySessions = sessions.filter(
@@ -40,7 +41,7 @@ function StatsBadges({ sessions = [] }) {
     return `${hours}h ${minutes}m`;
   }, [sessions]);
 
-  // Update badges every second to reflect real-time changes
+  // Uppdaterar badges varje sekund för att visa realtidsändringar
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentEnergy(getCurrentEnergy());
@@ -50,16 +51,16 @@ function StatsBadges({ sessions = [] }) {
     return () => clearInterval(interval);
   }, []);
 
-  // Get energy emoji
+  // Hämtar emoji för energinivå
   const getEnergyEmoji = (level) => {
     const emojis = ['😴', '😐', '🙂', '😊', '🤩'];
     return emojis[level - 1] || '🙂';
   };
 
-  // Get smart recommendation based on energy
+  // Hämtar smart rekommendation baserat på energinivå
   const getRecommendation = (energy) => {
     if (energy === 1) {
-      return 'Remember: All is in your mind. You can do it!';
+      return 'You can do it. Keep going!';
     } else if (energy === 2) {
       return 'Don\'t stress. One thing at a time. You\'re doing great! ✨';
     } else if (energy === 3) {
@@ -67,21 +68,21 @@ function StatsBadges({ sessions = [] }) {
     } else if (energy === 4) {
       return 'Wow! You\'re doing great — So close, keep shining! 🌟';
     } else {
-      return 'Great job! See… the real power is in your mind. You did it! 🎉';
+      return 'Great job! You did it! 🎉';
     }
   };
 
-  // Handle energy level selection
+  // Hanterar val av energinivå
   const handleEnergySelect = (level) => {
     logEnergy(level);
     setCurrentEnergy(level);
     setShowEnergyModal(false);
-    
-    // Show success notification
+    // Visar en notifikation vid lyckad uppdatering
     setShowNotification(true);
     setTimeout(() => setShowNotification(false), 3000);
   };
 
+  // Lista över möjliga energinivåer
   const energyLevels = [
     { level: 1, emoji: '😴', label: 'Exhausted' },
     { level: 2, emoji: '😐', label: 'Low' },
@@ -89,6 +90,18 @@ function StatsBadges({ sessions = [] }) {
     { level: 4, emoji: '😊', label: 'Good' },
     { level: 5, emoji: '🤩', label: 'Excellent' }
   ];
+
+  // Funktion för att hämta nästa rekommenderade aktivitet baserat på timer-status
+  const getNextUpText = () => {
+    const mode = getCurrentMode();
+    if (mode === 'Deep Work' || mode === 'Meeting' || mode === 'Learning') {
+      return 'Break for 10 min';
+    } else if (mode === 'Break') {
+      return 'Resume work session';
+    } else {
+      return 'Start your focus session';
+    }
+  };
 
   return (
     <>
@@ -100,15 +113,13 @@ function StatsBadges({ sessions = [] }) {
           <div className="badge-value">{totalTime || '0h 0m'}</div>
         </div>
       </div>
-
       <div className="stat-badge">
-        <div className="badge-icon">🎯</div>
+        <div className="badge-icon">🔔</div>
         <div className="badge-content">
-          <div className="badge-label">Focus Mode</div>
-          <div className="badge-value">{currentMode}</div>
+          <div className="badge-label">Next Up</div>
+          <div className="badge-value">{getNextUpText()}</div>
         </div>
       </div>
-
       <div className="stat-badge energy-badge-clickable" onClick={() => setShowEnergyModal(true)}>
         <div className="badge-icon">{getEnergyEmoji(currentEnergy)}</div>
         <div className="badge-content">
@@ -117,7 +128,6 @@ function StatsBadges({ sessions = [] }) {
         </div>
         <div className="badge-hint">Click to update</div>
       </div>
-
       <div className="stat-badge recommendation-badge">
         <div className="badge-icon">💡</div>
         <div className="badge-content">
@@ -127,7 +137,7 @@ function StatsBadges({ sessions = [] }) {
       </div>
     </div>
 
-    {/* Energy Selection Modal */}
+    {/* Energival-modal */}
     {showEnergyModal && (
       <div className="energy-modal-overlay" onClick={() => setShowEnergyModal(false)}>
         <div className="energy-modal" onClick={(e) => e.stopPropagation()}>
@@ -153,7 +163,7 @@ function StatsBadges({ sessions = [] }) {
       </div>
     )}
 
-    {/* Success Notification */}
+    {/* Lyckad notifikation */}
     {showNotification && (
       <div className="energy-notification">
         <span className="notification-icon">✨</span>

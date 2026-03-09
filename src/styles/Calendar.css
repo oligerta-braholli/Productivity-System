@@ -2,7 +2,9 @@
 .calendar-card {
   background: var(--bg-secondary);
   padding: 0.6rem !important;
-  width: 100%;
+  width: 60%;
+  max-width: 70%;
+  margin: 0 auto;
   border-top-color: var(--color-accent) !important;
 }
 
@@ -78,8 +80,12 @@
   font-weight: 500;
   cursor: pointer;
   transition: all var(--transition-medium);
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   color: var(--text-primary);
+  min-width: 28px;
+  min-height: 28px;
+  max-width: 36px;
+  max-height: 36px;
 }
 
 .calendar-day:hover:not(.empty) {

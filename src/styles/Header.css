@@ -6,7 +6,7 @@
   padding: var(--spacing-md) var(--spacing-lg);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
+ 
 }
 
 .header-content {
@@ -29,10 +29,7 @@
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  background: var(--color-primary-light);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary-light);
 }
 
 .header-subtitle {
@@ -101,10 +98,11 @@
 
 .date {
   margin: 0;
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  line-height: 1.2;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
 }
 
 @media (max-width: 768px) {
@@ -133,11 +131,5 @@
 
   .greeting h2 {
     margin: 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-subtitle {
-    display: none;
   }
 }

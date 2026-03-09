@@ -20,30 +20,30 @@ function Stats({ sessions = [] }) {
     return `${hours}h ${minutes}m`;
   };
 
-  // Get real week data based on actual sessions
+  // Hämta verklig veckodata baserat på faktiska sessioner
   const getWeekData = () => {
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     const today = new Date();
     
-    // Calculate the last 7 days
+    // Beräkna de senaste 7 dagarna
     const last7Days = Array.from({ length: 7 }, (_, i) => {
       const date = new Date(today);
-      date.setDate(today.getDate() - (6 - i)); // Start from 6 days ago to today
+      date.setDate(today.getDate() - (6 - i)); // Börja från 6 dagar sedan till idag
       return date;
     });
     
     const weekData = last7Days.map((date) => {
-      // Get day name (Monday = 0, Sunday = 6)
+      // Hämta veckodag (Måndag = 0, Söndag = 6)
       const dayIndex = date.getDay() === 0 ? 6 : date.getDay() - 1;
       const dayName = days[dayIndex];
       
-      // Filter sessions for this specific day
+      // Filtrera sessioner för denna specifika dag
       const daySessions = sessions.filter(session => {
         const sessionDate = new Date(session.timestamp);
         return sessionDate.toDateString() === date.toDateString();
       });
       
-      // Sum up duration for the day and convert to hours
+      // Summera varaktighet för dagen och konvertera till timmar
       const totalSeconds = daySessions.reduce((sum, s) => sum + s.duration, 0);
       const hours = totalSeconds / 3600;
       
@@ -58,7 +58,7 @@ function Stats({ sessions = [] }) {
 
   const weekData = getWeekData();
   
-  // Find max hours for scaling
+  // Hitta max timmar för skalning
   const maxHours = Math.max(...weekData.map(d => d.hours), 1);
 
   return (
@@ -87,16 +87,16 @@ function Stats({ sessions = [] }) {
             const barHeight = maxHours > 0 ? (data.hours / maxHours) * 55 : 0;
             const displayHours = data.hours.toFixed(1);
             
-            // Check if this is today
-            const isToday = index === 6; // Last item in array is today
+            // Kontrollera om detta är idag
+            const isToday = index === 6; // Sista posten i arrayen är idag
             
-            // Color gradient based on hours worked
+            // Färggradient baserat på arbetade timmar
             const getBarColor = (hours) => {
               if (hours === 0) return 'rgba(255,255,255,0.3)';
-              if (hours < 2) return 'linear-gradient(180deg, #e74c3c 0%, #c0392b 100%)'; // Red - low
-              if (hours < 4) return 'linear-gradient(180deg, #f39c12 0%, #e67e22 100%)'; // Orange - medium
-              if (hours < 6) return 'linear-gradient(180deg, #3498db 0%, #2980b9 100%)'; // Blue - good
-              return 'linear-gradient(180deg, #27ae60 0%, #229954 100%)'; // Green - excellent
+              if (hours < 2) return 'linear-gradient(180deg, #e74c3c 0%, #c0392b 100%)'; // Röd - låg
+              if (hours < 4) return 'linear-gradient(180deg, #f39c12 0%, #e67e22 100%)'; // Orange - medel
+              if (hours < 6) return 'linear-gradient(180deg, #3498db 0%, #2980b9 100%)'; // Blå - bra
+              return 'linear-gradient(180deg, #27ae60 0%, #229954 100%)'; // Grön - utmärkt
             };
             
             return (

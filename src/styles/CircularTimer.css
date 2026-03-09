@@ -4,34 +4,89 @@
   align-items: center;
   gap: 2rem;
   padding: 2rem;
-  background: white;
+ background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(133, 112, 112, 0.1);
 }
 
 .circular-timer {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(56, 116, 206, 0.10);
+  overflow: hidden;
+  border: 2px solid #5480c2;
+}
+
+.circular-timer::before {
+  display: none;
 }
 
 .timer-svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  filter: none;
+  z-index: 2;
 }
 
 .timer-svg circle {
   transition: stroke-dasharray 0.3s ease;
+  stroke: #5480c2;
+  stroke-width: 8;
 }
 
 .timer-svg circle.timer-running {
-  animation: pulse 2s ease-in-out infinite;
+  animation: none;
+  stroke: #5480c2;
+}
+
+
+.timer-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #2563eb;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18), 0 1px 0 #fff;
+  z-index: 3;
+}
+
+/* Mörkt läge-stilar för CircularTimer */
+.dark-mode .circular-timer-container {
+  background: #1E293B;
+}
+.dark-mode .circular-timer {
+  background: #1E293B;
+  border: 2px solid #444a5a;
+}
+
+
+.timer-status {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+  color: var(--color-primary-light);
+  opacity: 1;
+  z-index: 3;
+}
+
+/* Tunn markör för klockan */
+.timer-svg .timer-tick {
+  stroke: #4f749e;
+  stroke-width: 2;
+  opacity: 0.7;
 }
 
 @keyframes pulse {
   0%, 100% {
-    filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.6));
+    filter: drop-shadow(0 0 8px rgba(61, 98, 165, 0.6));
   }
   50% {
     filter: drop-shadow(0 0 16px rgba(102, 126, 234, 0.8));
@@ -46,14 +101,7 @@
   text-align: center;
 }
 
-.timer-display {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #2d3748;
-  font-family: 'Courier New', monospace;
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
+
 
 .timer-display.running {
   animation: pulse-text 2s ease-in-out infinite;
@@ -69,11 +117,13 @@
 }
 
 .timer-status {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 1rem;
-  font-weight: 600;
-  color: #718096;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: #528ed3;
+  opacity: 0.8;
 }
 
 .timer-controls-circular {
@@ -101,25 +151,7 @@
   font-size: 0.95rem;
 }
 
-/* Dark mode */
-body.dark-mode .circular-timer-container {
-  background: #1e293b;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
 
-body.dark-mode .timer-display {
-  color: #e2e8f0;
-}
-
-body.dark-mode .timer-status {
-  color: #94a3b8;
-}
-
-body.dark-mode .timer-svg circle:first-child {
-  stroke: rgba(255, 255, 255, 0.05);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   .circular-timer {
     width: 250px;
@@ -157,3 +189,4 @@ body.dark-mode .timer-svg circle:first-child {
     font-size: 0.875rem;
   }
 }
+

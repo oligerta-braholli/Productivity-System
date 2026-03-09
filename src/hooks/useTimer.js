@@ -1,10 +1,27 @@
 import { useState, useEffect, useRef } from 'react';
 
 function useTimer() {
-  const [time, setTime] = useState(0); // Tid i sekunder
-  const [isRunning, setIsRunning] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+  // Läs initialstatus från localStorage
+  const getInitial = (key, fallback) => {
+    const stored = localStorage.getItem(key);
+    return stored !== null ? JSON.parse(stored) : fallback;
+  };
+
+  const [time, setTime] = useState(() => getInitial('timer_time', 0));
+  const [isRunning, setIsRunning] = useState(() => getInitial('timer_isRunning', false));
+  const [isPaused, setIsPaused] = useState(() => getInitial('timer_isPaused', false));
   const intervalRef = useRef(null);
+
+  // Spara status i localStorage varje gång det ändras
+  useEffect(() => {
+    localStorage.setItem('timer_time', JSON.stringify(time));
+  }, [time]);
+  useEffect(() => {
+    localStorage.setItem('timer_isRunning', JSON.stringify(isRunning));
+  }, [isRunning]);
+  useEffect(() => {
+    localStorage.setItem('timer_isPaused', JSON.stringify(isPaused));
+  }, [isPaused]);
 
   useEffect(() => {
     if (isRunning && !isPaused) {

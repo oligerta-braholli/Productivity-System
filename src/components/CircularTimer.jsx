@@ -9,12 +9,7 @@ function CircularTimer({ onSessionComplete }) {
   const [sessionType, setSessionType] = useLocalStorage('currentMode', 'Idle');
   const [sessionTitle, setSessionTitle] = useState('');
 
-  // Update mode to Idle when timer stops
-  useEffect(() => {
-    if (!timer.isRunning && sessionType !== 'Idle') {
-      setSessionType('Idle');
-    }
-  }, [timer.isRunning, sessionType, setSessionType]);
+  // useEffect borttagen: sessionType ändras inte längre automatiskt till 'Idle' när timern stannar
 
   const formatTime = (seconds) => {
     const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
@@ -27,10 +22,6 @@ function CircularTimer({ onSessionComplete }) {
     setSessionType(mode);
     setSessionTitle(`${mode} Session`);
     
-    if (timer.isRunning) {
-      timer.stop();
-    }
-    timer.start();
   };
 
   const handleStop = () => {
@@ -52,14 +43,14 @@ function CircularTimer({ onSessionComplete }) {
     setSessionTitle('');
   };
 
-  // Calculate progress for circular animation (60 minutes = full circle)
+  // Beräkna framsteg för cirkulär animation (60 minuter = full cirkel)
   const progress = Math.min((timer.time / 3600) * 360, 360);
 
   return (
     <div className="circular-timer-container">
       <div className="circular-timer">
         <svg className="timer-svg" viewBox="0 0 200 200">
-          {/* Background circle */}
+          {/* Bakgrundscirkel */}
           <circle
             cx="100"
             cy="100"
@@ -69,7 +60,7 @@ function CircularTimer({ onSessionComplete }) {
             strokeWidth="8"
           />
           
-          {/* Progress circle */}
+          {/* Framstegscirkel */}
           <circle
             cx="100"
             cy="100"
@@ -83,7 +74,7 @@ function CircularTimer({ onSessionComplete }) {
             className={timer.isRunning && !timer.isPaused ? 'timer-running' : ''}
           />
           
-          {/* Gradient definition */}
+          {/* Gradientdefinition */}
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#667eea" />
@@ -93,18 +84,21 @@ function CircularTimer({ onSessionComplete }) {
         </svg>
         
         <div className="timer-content">
-          <div className={`timer-display ${timer.isRunning && !timer.isPaused ? 'running' : ''}`}>
+          <div className="timer-display">
             {formatTime(timer.time)}
           </div>
-          <div className="timer-status">
-            {timer.isRunning ? (timer.isPaused ? 'Paused' : sessionType) : 'Ready'}
-          </div>
+          {/* Ingen status visas längre */}
         </div>
       </div>
 
       <div className="timer-controls-circular">
         {!timer.isRunning ? (
-          <Button onClick={timer.start} variant="success" disabled={sessionType === 'Idle'}>
+          <Button onClick={() => {
+            if (sessionType !== 'Idle') {
+              timer.reset();
+              timer.start();
+            }
+          }} variant="primary" disabled={sessionType === 'Idle'}>
             Start
           </Button>
         ) : (
@@ -143,6 +137,13 @@ function CircularTimer({ onSessionComplete }) {
           disabled={timer.isRunning}
         >
           ☕ Break
+        </Button>
+        <Button 
+          onClick={() => handleModeChange('Learning')}
+          variant={sessionType === 'Learning' ? 'warning' : 'secondary'}
+          disabled={timer.isRunning}
+        >
+          📚 Learning
         </Button>
       </div>
     </div>

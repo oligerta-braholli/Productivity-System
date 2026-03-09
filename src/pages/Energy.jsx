@@ -8,9 +8,9 @@ function Energy() {
   const { energyLogs, logEnergy, getAverageEnergy } = useEnergy();
   const [selectedLevel, setSelectedLevel] = useState(null);
 
-  // Initialize with a positive default if no logs
+  // Initiera med ett positivt standardvärde om inga loggar finns
   const getCurrentEnergy = () => {
-    if (energyLogs.length === 0) return 3; // Default to OK level
+    if (energyLogs.length === 0) return 3; // Standard till OK-nivå
     return energyLogs[energyLogs.length - 1].level;
   };
 
@@ -30,17 +30,17 @@ function Energy() {
   };
 
   const getEnergyColor = (level) => {
-    if (level >= 4.5) return '#27ae60'; // Excellent - Green
-    if (level >= 3.5) return '#3498db'; // Good - Blue
+    if (level >= 4.5) return '#27ae60'; // Utmärkt - Grön
+    if (level >= 3.5) return '#3498db'; // Bra - Blå
     if (level >= 2.5) return '#f39c12'; // OK - Orange
-    if (level >= 1.5) return '#e67e22'; // Low - Dark Orange
-    return '#e74c3c'; // Exhausted - Red
+    if (level >= 1.5) return '#e67e22'; // Låg - Mörk orange
+    return '#e74c3c'; // Utmattad - Röd
   };
 
   const avgEnergy7Days = getAverageEnergy(7);
   const avgEnergy30Days = getAverageEnergy(30);
 
-  // Get personalized positive recommendations based on energy
+  // Hämta personliga positiva rekommendationer baserat på energi
   const getPersonalizedTips = () => {
     const currentLevel = selectedLevel || getCurrentEnergy();
 
@@ -80,7 +80,7 @@ function Energy() {
     return tips[currentLevel] || tips[3];
   };
 
-  // Group energy logs by date and calculate daily averages
+  // Gruppera energiloggar efter datum och beräkna dagliga medelvärden
   const getChartData = (days = 14) => {
     const now = new Date();
     const data = [];
