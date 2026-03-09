@@ -2,9 +2,19 @@ import { useState, useEffect } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 import '../styles/Header.css';
 
+
 function Header() {
   const [isDarkMode, setIsDarkMode] = useLocalStorage('darkMode', false);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [userName, setUserName] = useState('');
+
+  // Fetch user name from localStorage on mount
+  useEffect(() => {
+    const storedName = localStorage.getItem('userName');
+    if (storedName) {
+      setUserName(storedName);
+    }
+  }, []);
 
   // Initialize dark mode on mount
   useEffect(() => {
@@ -76,7 +86,7 @@ function Header() {
       
       <div className="welcome-section">
         <div className="greeting">
-          <h2>{getGreeting()}!</h2>
+          <h2>{getGreeting()} {userName ? userName.replace(/^"|"$/g, '') : ''}!</h2>
           <p className="date">{getFormattedDate()} • {getFormattedTime()}</p>
         </div>
       </div>

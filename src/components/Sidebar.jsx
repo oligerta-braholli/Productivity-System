@@ -4,7 +4,7 @@ import '../styles/Sidebar.css';
 function Sidebar() {
   const navItems = [
     { path: '/', label: 'Dashboard', icon: '🏠' },
-    { path: '/timer', label: 'Timer', icon: '⏱️' },
+    // { path: '/timer', label: 'Timer', icon: '⏱️' },
     { path: '/history', label: 'History', icon: '📊' },
     { path: '/energy', label: 'Energy', icon: '⚡' },
     { path: '/settings', label: 'Settings', icon: '⚙️' }

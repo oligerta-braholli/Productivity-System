@@ -17,7 +17,7 @@ src/
 │
 ├── pages/
 │   ├── Dashboard.jsx       # Huvudsida med översikt
-│   ├── TimerPage.jsx       # Timer-sida med formulär
+// │   ├── TimerPage.jsx       # Timer-sida med formulär
 │   ├── History.jsx         # Historik över sessioner
 │   ├── Energy.jsx          # Energinivå-tracking
 │   └── Settings.jsx        # Inställningar
@@ -38,7 +38,7 @@ src/
 │   ├── Stats.css
 │   ├── QuickActions.css
 │   ├── Dashboard.css
-│   ├── TimerPage.css
+// │   ├── TimerPage.css
 │   ├── History.css
 │   ├── Energy.css
 │   └── Settings.css

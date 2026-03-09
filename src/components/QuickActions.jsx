@@ -14,7 +14,7 @@ function QuickActions() {
     <Card title="⚡ Quick Actions" className="quick-actions-card">
       <div className="actions-grid">
         {actions.map((action) => (
-          <Link key={action.id} to="/timer" style={{ textDecoration: 'none' }}>
+          {/* <Link key={action.id} to="/timer" style={{ textDecoration: 'none' }}> */}
             <Button variant={action.variant}>
               {action.label}
             </Button>
