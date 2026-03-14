@@ -113,14 +113,16 @@ function Energy() {
       <Card title="Energy Tracking" className="energy-card">
         <div className="energy-logger">
           <h3>How are you feeling?</h3>
-          <div className="energy-levels">
+          <div className="energy-levels" role="group" aria-label="Energy levels">
             {energyLevels.map((item) => (
               <button
                 key={item.level}
                 className={`energy-btn ${selectedLevel === item.level ? 'selected' : ''}`}
                 onClick={() => setSelectedLevel(item.level)}
+                aria-label={`Log energy level: ${item.label}`}
+                aria-pressed={selectedLevel === item.level}
               >
-                <span className="energy-emoji">{item.emoji}</span>
+                <span className="energy-emoji" aria-hidden="true">{item.emoji}</span>
                 <span className="energy-label">{item.label}</span>
               </button>
             ))}
@@ -149,13 +151,13 @@ function Energy() {
           </div>
         </div>
 
-        <div className="energy-chart">
+        <div className="energy-chart" aria-label="Energy trend for the last 14 days" tabIndex={0}>
           <h3>Energy Trend (Last 14 Days)</h3>
           {energyLogs.length === 0 ? (
             <p className="no-chart-data">No data to display. Start logging your energy!</p>
           ) : (
             <div className="chart-container">
-              <div className="chart-y-axis">
+              <div className="chart-y-axis" aria-hidden="true">
                 <span>5</span>
                 <span>4</span>
                 <span>3</span>
@@ -173,6 +175,8 @@ function Energy() {
                           backgroundColor: day.count > 0 ? getEnergyColor(day.level) : '#ecf0f1'
                         }}
                         title={`${day.shortDate}: ${day.count > 0 ? day.level.toFixed(1) : 'No data'}`}
+                        aria-label={`Energy on ${day.shortDate}: ${day.count > 0 ? day.level.toFixed(1) : 'No data'}`}
+                        tabIndex={0}
                       >
                         {day.count > 0 && (
                           <span className="bar-value">{day.level.toFixed(1)}</span>
@@ -187,12 +191,12 @@ function Energy() {
           )}
         </div>
 
-        <div className="energy-recommendations">
+        <div className="energy-recommendations" aria-label="Personalized energy tips" tabIndex={0}>
           <h3>💡 Personalized Tips for You</h3>
           <div className="tips-grid">
             {getPersonalizedTips().map((tip, index) => (
-              <div key={index} className="tip-card">
-                <span className="tip-icon">{tip.icon}</span>
+              <div key={index} className="tip-card" tabIndex={0} aria-label={`Tip: ${tip.text} (${tip.type})`}>
+                <span className="tip-icon" aria-hidden="true">{tip.icon}</span>
                 <p className="tip-text">{tip.text}</p>
                 <span className="tip-type">{tip.type}</span>
               </div>
@@ -200,7 +204,7 @@ function Energy() {
           </div>
         </div>
 
-        <div className="energy-history">
+        <div className="energy-history" aria-label="Recent energy logs" tabIndex={0}>
           <h3>Recent Logs</h3>
           {energyLogs.length === 0 ? (
             <p className="no-logs">No energy logs yet</p>
@@ -210,8 +214,8 @@ function Energy() {
                 .slice(-10)
                 .reverse()
                 .map((log) => (
-                  <div key={log.id} className="log-item">
-                    <span className="log-emoji">
+                  <div key={log.id} className="log-item" tabIndex={0} aria-label={`Energy log: Level ${log.level} on ${new Date(log.timestamp).toLocaleString('en-US')}`}> 
+                    <span className="log-emoji" aria-hidden="true">
                       {energyLevels[log.level - 1].emoji}
                     </span>
                     <span className="log-level">

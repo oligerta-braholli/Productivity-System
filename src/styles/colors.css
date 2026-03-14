@@ -11,16 +11,16 @@
   --color-secondary-dark: #170aac;
   
   /* Accent - rosa */
-  --color-accent: #5860cf;
-  --color-accent-light: #3921a5;
+  --color-accent: #343ec9;
+  --color-accent-light: #2d149c;
   
   /* Bakgrundsfärger */
   --bg-primary: #FAFBFC;
   --bg-secondary: #FFFFFF;
-  --bg-tertiary: #F3F4F6;
+    --bg-tertiary: #f3f4f6;
   
   /* Textfärger */
-  --text-primary: #1F2937;
+  --text-primary: #1F2937;                                       
   --text-secondary: #6B7280;
   --text-muted: #9CA3AF;
   
@@ -44,7 +44,7 @@
   /* Gradienter */
   --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
-  --gradient-subtle: linear-gradient(135deg, #F3E8FF 0%, #E0E7FF 100%);
+  --gradient-subtle: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
   
   /* Övergångar */
   --transition-fast: 150ms ease-in-out;
